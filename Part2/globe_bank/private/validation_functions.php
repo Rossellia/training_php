@@ -112,4 +112,5 @@
     return $page_count === 0;
   }
 
+
 ?>

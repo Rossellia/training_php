@@ -1,0 +1,5 @@
+The Public Context
+find_all_visible_subjects()
+find_all_subjects() and skip not find_all_visible_subjects
+find_all_subjects($visible = false)
+find_all_subjects($options=[]) --best one in the long run

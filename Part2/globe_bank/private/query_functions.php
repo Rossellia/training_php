@@ -277,7 +277,7 @@
     }
   }
 
-  function find_pages_by_subjecty_id($subject_id) {
+  function find_pages_by_subject_id($subject_id) {
     global $db;
 
     $sql = "SELECT * FROM pages ";
@@ -286,6 +286,19 @@
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result; // returns an assoc. array
+  }
+
+  function find_first_page_of_subject($subject_id) {
+    global $db;
+
+    $sql = 'SELECT * FROM pages ';
+    $sql .= "WHERE subject_id='" . db_escape($db, $subject_id) . "' ";
+    $sql .= "ORDER BY position ASC";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $first_result = mysqli_fetch_assoc($result);
+
+    return $first_result['id'];
   }
 
 ?>

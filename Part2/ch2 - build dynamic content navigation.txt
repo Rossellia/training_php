@@ -5,3 +5,10 @@ php databases interaction
 3.use the returned data (if any)
 4. release the returned data
 5.close the db connection
+
+
+Collapsing navigation
+-only list pages for the currently selected subject
+-each subject name is a link
+-clicking subject shows its pages, hides others
+-show contact for the first page under the subject
