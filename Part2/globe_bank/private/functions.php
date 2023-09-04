@@ -58,5 +58,23 @@ function display_errors($errors=array()) {
   return $output;
 }
 
+function get_and_clear_session_message(){
+  if(isset($_SESSION['status_message']) && $_SESSION['status_message'] != ''){
+      $msg = $_SESSION['status_message'];
+      unset($_SESSION['status_message']);
+      return $msg;
+  }
+}
+
+function display_session_message(){
+  $msg = get_and_clear_session_message();
+  if(!is_blank($msg))
+  {
+    return '<div id="message">' .  h($msg) . '</div>'; //somehow the css doesn't work for this one
+    
+    //return $msg;
+  }
+}
+
 
 ?>

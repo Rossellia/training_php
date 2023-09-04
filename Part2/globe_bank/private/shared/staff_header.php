@@ -18,6 +18,17 @@
 
     <navigation>
       <ul>
+        <li>User: <?php echo $_SESSION['username'] ?? '';?></li>
         <li><a href="<?php echo url_for('/staff/index.php'); ?>">Menu</a></li>
+        <li><a href="<?php echo url_for('/staff/logout.php'); ?>">Logout</a></li>
       </ul>
+
+      
     </navigation>
+
+    <?php 
+    //my solution was too hobo it seems, even though it worked, it was ugly af
+    //echo $_SESSION['status_message'] ?? ''; 
+    //unset($_SESSION['status_message']);
+    echo display_session_message();
+    ?>

@@ -17,6 +17,10 @@ $page = find_page_by_id($id);
 
   <div class="page show">
 
+    <div class="actions">
+    <a class="action" href="<?php echo url_for('/index.php?id=' .  h(u($page['id'])) . '&preview=true'); ?>" target="_blank">&#9733 Preview Page &#9733</a>
+    </div>
+
     <h1>Page: <?php echo h($page['menu_name']); ?></h1>
 
     <div class="attributes">
@@ -45,6 +49,7 @@ $page = find_page_by_id($id);
 
 
   </div>
+
 
 </div>
 
