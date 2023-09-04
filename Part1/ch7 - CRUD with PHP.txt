@@ -1,0 +1,21 @@
+-single subject -> sql select query, limit with where, primary key, returns a result set containing one roll
+
+INSERT INTO table(col1,col2,col3)
+VALUES (val1,val2,val3);
+-no subjects.id required
+-usually from form data
+-returns true or false
+
+mysqli_insert_id($connection) -return the id of an insert
+
+
+UPDATE table
+SET col1 = 'this', col2 = 'that'
+WHERE id = 1;
+-updating a single record requires subjects.id
+-usually from form data
+
+DELETE FROM table
+WHERE id = 1;
+-deleting a single record requires subjects.id
+-form post is optional, POST is best practice

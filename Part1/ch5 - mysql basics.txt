@@ -1,0 +1,157 @@
+-DATABASE
+    set of tables
+    one database = one application
+    web application has permission to use all tables
+
+-tables
+    set of rows and cols
+    single concept, a noun
+    relationship between tables
+
+-column
+    data of a simple type
+
+-rows
+    single record of data
+
+-field
+    intersection between rows and columns
+
+-primary key
+    unique indentifier 
+
+-foreign key
+    column whose values reference rows in another tables
+    foundation of relational databases
+
+-index
+    structure that increases lookup speed
+    primary keys, foreign keys, etc (frequent data)
+
+-CRUD create read update delete
+
+mysql --version
+
+mysql -u root -p  = logare ca root cu parola
+
+SHOW DATABASES;
+CREATE DATABASE db_name;
+USE db_name;
+DROP DATABASE db_name;
+
+GRANT ALL PRIVILEGES ON db_name.*
+TO 'username'@'localhost'
+IDENTIFIED BY 'password';
+
+SHOW GRANTS FOR 'username'@'localhost';
+
+grant all privileges on globe_bank.* to 'webuser'@'localhost' identified by 'secretpassword';
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'ceva parola noua'; --add root password
+flush privileges;
+exit;
+SET PASSWORD FOR root@localhost=''; --remove root password
+
+show tables;
+show columns from table_name;
+drop table table_name;
+
+
+
+CREATE TABLE subjects (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  menu_name VARCHAR(255),
+  position INT(3),
+  visible TINYINT(1),
+  PRIMARY KEY (id)
+);
+
+
+show columns from subjects;
+
+SELECT * 
+FROM table
+WHERE column1 = 'some_text'
+ORDER BY column1 ASC;
+
+INSERT INTO table (col1, col2, col3)
+VALUES (val1, val2, val3);
+
+UPDATE table
+SET col1 = 'this', col2 = 'that'
+WHERE id = 1;
+
+DELETE FROM table
+WHERE id = 1;
+
+insert into subjects (id, menu_name, position, visible) values (1,'About Globe Bank',1,1);
+insert into subjects (menu_name, position, visible) values ('Consumer',2,1);
+update subjects set position='4' where id=3;
+update subjects set position='3',visible='0' where id=3;
+delete from subjects where id=4 limit 1;
+
+!SQL ADD INDDEX!
+ALTER TABLE table
+ADD INDEX index_name(column); -any time you have a foreign key, put an index on it.
+
+~~~~~~CHALLENGE~~~~~~
+
+CREATE TABLE pages (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    subject_id INT(11) NOT NULL,
+    menu_name VARCHAR(255),
+    position INT(3),
+    visible TINYINT(1),
+    content TEXT,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE pages
+ADD INDEX FK_SUBJECT(subject_id);
+
+show columns from pages;
+
+select * from subjects;
++----+------------------+----------+---------+
+| id | menu_name        | position | visible |
++----+------------------+----------+---------+
+|  1 | About Globe Bank |        1 |       1 |
+|  2 | Consumer         |        2 |       1 |
+|  3 | Small Business   |        3 |       0 |
++----+------------------+----------+---------+
+
+
+insert into pages (subject_id, menu_name, position, visible) values (1, 'Globe Bank', 1, 1);
+insert into pages (subject_id, menu_name, position, visible) values (1, 'History', 2, 1);
+insert into pages (subject_id, menu_name, position, visible) values (1, 'Leadership', 3, 1);
+insert into pages (subject_id, menu_name, position, visible) values (1, 'Contact Us', 4, 1);
+
+insert into pages (subject_id, menu_name, position, visible) values (2, 'Banking', 1, 1);
+insert into pages (subject_id, menu_name, position, visible) values (2, 'Credit cards', 2, 1);
+insert into pages (subject_id, menu_name, position, visible) values (2, 'Mortgages', 3, 1);
+
+
+insert into pages (subject_id, menu_name, position, visible) values (3, 'Checking', 1, 1);
+insert into pages (subject_id, menu_name, position, visible) values (3, 'Loans', 2, 1);
+insert into pages (subject_id, menu_name, position, visible) values (3, 'Merchant', 3, 1);
+
+select * from pages;
++----+------------+--------------+----------+---------+---------+
+| id | subject_id | menu_name    | position | visible | content |
++----+------------+--------------+----------+---------+---------+
+|  1 |          1 | Globe Bank   |        1 |       1 | NULL    |
+|  2 |          1 | History      |        2 |       1 | NULL    |
+|  3 |          1 | Leadership   |        3 |       1 | NULL    |
+|  4 |          1 | Contact Us   |        4 |       1 | NULL    |
+|  5 |          2 | Banking      |        1 |       1 | NULL    |
+|  6 |          2 | Credit cards |        2 |       1 | NULL    |
+|  7 |          2 | Mortgages    |        3 |       1 | NULL    |
+|  8 |          3 | Checking     |        1 |       1 | NULL    |
+|  9 |          3 | Loans        |        2 |       1 | NULL    |
+| 10 |          3 | Merchant     |        3 |       1 | NULL    |
++----+------------+--------------+----------+---------+---------+
+
+select id, subject_id from pages where id=3;
+select * from subjects where id=1;
+select * from subjects where id=2;
+select * from pages where subject_id=2;

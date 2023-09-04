@@ -1,0 +1,39 @@
+There is no such thing as a php link, it is a html link. We can use PHP to generate the link, but the output will still be a string that creates a html link.
+We output the content from php into the html in order to have it work.
+
+-We want a relative url, not a relative url. Absolute is /fauofhuoa/fahfa, relative is fauofhuoa/fahfa.
+
+-We can define an absolute point to define everything on. Working with absolute paths, we no longer need to change the names of the paths and can have the same
+shared php for multiple pages.
+
+-We can send more parameters using &
+
+-We can pass data from one page from another via links
+
+
+-When a new page request is received, php will take all the sent parameters and put them in an associative array, the super global variable $_GET or $_POST
+-SUPER GLOBALS - $_NUME, available in all variable scopes, assigned by PHP before processing page code; 
+                         values from super globals are always string, we can change the type by typecasting it using (int) variable, double, etc
+
+
+-you need to check if a value is set using either $id = $_GET['id'] ?? '1'; or $page = isset($_GET['page']) ? $_GET['page'] : '1';
+
+
+-we may need to encode special characters, for example & and such. For this, we have urlencode($string) and rawurlencode($string) ~ letters, numbers, underscore, dash unchanged, 
+                                                                                                                                    reserved chars are encoded, 
+                                                                                                                                    spaces become "+" in urlencode, "%20" in rawurlencode
+-rawurlencode the path (before the "?")
+-urlencode the query string (after the "?")
+
+-decode: urledecode($string), rawurldecode($string), you rarely need to use this because PHP automatically does this when it receives an url
+-values passed through $_GET are already decoded
+
+-reserved chars in HTML: <, >, &, "
+-htmlspecialchars($string)
+-cross-site scripting - XSS, attacker tricks a page into outputting javascript, major security vulnerability
+-USE htmlspecialchars EACH TIME YOU GET DATA FROM THE USER, DATABASE, COOKIE, FROM ANYWHERE
+
+
+
+
+

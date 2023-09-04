@@ -1,0 +1,43 @@
+-sql injection
+    -execute arbitrary sql requests
+    -craft string to manipulate sql syntax and inject code
+    -url parameters, form data, cookies, database data
+-sqli
+-single biggest security concern
+-ranked #1 security threat by Open Web Application Security Project (OWASP)
+
+
+-easy for attackers to detect and exploit
+-gives access to large amounts of important data
+-web applications have high level of access
+-circumvents normal access controls
+
+
+-bypass application authentication
+-steal data
+-alter data
+-destroy data
+
+sanitize data
+-convert characters with meaning in sql syntax to data
+-add a backslash before all single quotes
+$subject['menu_name'] = "David\'s Story";
+
+addslashes($string) - add slashes to characters
+mysqli_real_escape_string($db, $string)
+
+
+delimit data values
+--single quotes REQUIRED for strings, dates, times
+--single quotes NOT REQUIRED for numbers, booleans
+-small performance penalty to convert to correct type
+-large security benefit to quoting all values
+
+-put single quotes around all values
+-helps prevent sql injection
+-forces attackers to circumvent data delimiters
+
+prepared statements
+-prepare statement once and reuse it many times
+-can be faster
+-prevent sql injection

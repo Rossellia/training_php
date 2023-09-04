@@ -1,0 +1,22 @@
+-presence
+-string length
+-type
+-inclusion in a set 
+-format 
+-uniqueness 
+
+
+$errors = []
+$errors['menu_name'] = "Name cannot be blank";
+
+echo $errors['menu_name'] ?? '';
+
+if(isset($errors['menu_name'])){
+    echo "<span class=\"error\">*</span>";
+}
+
+
+echo 0 == FALSE ? 'true' : 'false';
+//true
+echo 0 === FALSE ? 'true' : 'false';
+//false

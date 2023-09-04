@@ -1,0 +1,17 @@
+          <input type="hidden" name="visible" value="0" />
+          <input type="checkbox" name="visible" value="1" />
+
+-when a checkbox isn't checked, html won't be send any data for visible, so we use hidden to send value 0
+
+-form data is saved in superglobal variable $_POST, assigned by PHP before processing page code. We also don't need to encode form parameters
+
+-detect form submission
+    test if a key parameter has a value
+    test if submit parameter was sent
+    test if REQUEST_METHOD is post $_SERVER['REQUEST_METHOD'] ===='POST'
+
+-single-page form processing - form that submits to itself
+    all logic related to the form in one file
+    redisplay the form on errors
+    return error messages
+    populate fields with previous values

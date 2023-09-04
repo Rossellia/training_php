@@ -1,0 +1,23 @@
+-good to have an index.php in every public directory, webserver can display the contents of the directory if the index.php page is not present
+-- PHP files on the public directory can see the private files through the file system.
+-- The two calls to "dirname()" go up two levels in the directory tree
+-staff -- public directory, password protected, still accessible by someone via server
+-group phps into resources to make the folder more scalable and organized
+
+-php pages are just html pages with php embedded in it
+
+-php install course - php with mysql essential training
+
+
+-include, require
+-reusable code with include
+-include and require files 
+-- libraries of functions
+--layout sections: header, footer, Navigation, sidebar 
+--reusable sections of code (HTML, php, javascript)
+--include()
+--require() -same as include, but raises an error if the file is not loaded, use this if the file is essential for the web page
+--include_once()
+--require_once()
+
+-use static strings inside include or require, otherwise the code won't be safe because users can load files 

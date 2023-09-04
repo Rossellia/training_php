@@ -1,0 +1,60 @@
+-mysql -original api 
+-mysqli - imporved api 
+-pdo - php data objects
+
+-prepared statements are important security wise
+
+
+1.Create db content -once/php page
+2.Perform queries
+3.Use data if any
+4.Release the returned data
+5.Close db connection - once/php page
+
+
+
+mysqli_connect($host, $user, $password, $database)
+mysqli_close($connection) -not required, but recommended because it returns resources back and it can improve overall site performance
+
+
+
+
+mysqli_query($connection, $query)
+mysqli_free_result($result_set)
+
+select query returns $result_set
+create, insert, delete return a boolean, either true or false
+
+
+mysqli_fetch_row
+    -results are in a standard array
+    -['1','About Globe Bank', '1', '1']
+    -keys are integers
+
+mysqli_fetch_assoc
+    -results are in an associative array
+    -['id'=>'1', 'menu_name'=>'About Globe Bank'...]
+    -keys are column names
+    -echo $subject['id'];
+
+mysqli_fetch_array
+    -results are in either or both types of array
+    -mysql_num, mysql_assoc, mysql_both
+
+
+$result = find_all_subjects();
+$count = mysqli_num_rows($result);
+
+for($i = 0; $i < $count; $i++)
+{
+    $subject = mysqli_fetch_assoc($result);
+    echo $subject['menu_name'];
+}
+
+while($subject = mysqli_fetch_assoc($result)){
+    echo $subject['menu_name'];
+}
+
+
+mysqli_connect_errno() - error number, return error code to the last call to connect to database
+mysqli_connect_error() - return a string description of that last connect error
