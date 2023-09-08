@@ -1,0 +1,50 @@
+class Person{
+
+}
+
+class ProductImage{
+
+}
+
+-capitalize and camelcase class names
+-make nouns singular
+-define each class in a separate file
+-group class files in a directory
+
+FUNCTIONS FOR CLASSES
+get_declared_classes() - array of classes that PHP knows about
+class_exists($string)
+
+INSTANCE
+-a single object created from a class definition
+class Person{}
+$person1 = new Person;
+
+FUNCTIONS FOR INSTANCES
+get_class($object)
+is_a($object, $string)
+
+
+CLASS PROPERTIES
+-variables to hold object values
+-also called attributes, class variables, instance variables
+-define with var keyword, followed by $variable_name
+-can set an initial value
+
+
+FUNCTIONS FOR PROPERTIES
+get_class_vars($string)
+get_object_vars($object)
+property_exists($mixed, $string)
+
+CLASS METHODS
+-functions to perform object actions 
+-non-oop: functions; oop: METHODS
+-define inside classes like regular functions
+
+get_class_methods($mixed)
+method_exists($mixed, $string)
+
+REFER TO AN INSTANCE
+-outside the class: $variable->
+-inside the class: $this->
