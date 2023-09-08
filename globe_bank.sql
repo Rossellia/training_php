@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2023 at 10:56 AM
+-- Generation Time: Sep 08, 2023 at 10:55 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,8 +24,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admins`
+--
+
+DROP TABLE IF EXISTS `admins`;
+
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `hashed_password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `first_name`, `last_name`, `email`, `username`, `hashed_password`) VALUES
+(2, 'Admin', 'Test', 'test@testing.com', 'Testing1', '$2y$10$NMl2tZmpfhqTxujx2Tkey.xS0lG5O/NKlSNzhq1Fl3M2FOqBff47G');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pages`
 --
+
+DROP TABLE IF EXISTS `pages`;
 
 CREATE TABLE `pages` (
   `id` int(11) NOT NULL,
@@ -61,6 +88,8 @@ INSERT INTO `pages` (`id`, `subject_id`, `menu_name`, `position`, `visible`, `co
 -- Table structure for table `subjects`
 --
 
+DROP TABLE IF EXISTS `subjects`;
+
 CREATE TABLE `subjects` (
   `id` int(11) NOT NULL,
   `menu_name` varchar(255) DEFAULT NULL,
@@ -83,6 +112,13 @@ INSERT INTO `subjects` (`id`, `menu_name`, `position`, `visible`) VALUES
 --
 
 --
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_username` (`username`);
+
+--
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
@@ -100,16 +136,22 @@ ALTER TABLE `subjects`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

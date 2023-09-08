@@ -93,6 +93,7 @@
     return preg_match($email_regex, $value) === 1;
   }
 
+
   // has_unique_page_menu_name('History')
   // * Validates uniqueness of pages.menu_name
   // * For new records, provide only the menu_name.
@@ -110,6 +111,32 @@
     mysqli_free_result($page_set);
 
     return $page_count === 0;
+  }
+
+  function has_unique_admin_username($username, $current_id="0") {
+    global $db;
+
+    $sql = "SELECT * FROM admins ";
+    $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
+    $sql .= "AND id != '" . db_escape($db, $current_id) . "'";
+
+    $admin_set = mysqli_query($db, $sql);
+    $admin_count = mysqli_num_rows($admin_set);
+    mysqli_free_result($admin_set);
+
+    return $admin_count === 0;
+  }
+
+
+  // has_valid_email_format('nobody@nowhere.com')
+  // * validate correct format for email addresses
+  // * format: [chars]@[chars].[2+ letters]
+  // * preg_match is helpful, uses a regular expression
+  //    returns 1 for a match, 0 for no match
+  //    http://php.net/manual/en/function.preg-match.php
+  function has_valid_password_format($value) {
+    $password_regex = '/^.*(?=.{7,})(?=.*[!@#$%^&*?-])(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/';
+    return preg_match($password_regex, $value) === 1;
   }
 
 

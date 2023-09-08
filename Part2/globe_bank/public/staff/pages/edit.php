@@ -2,6 +2,8 @@
 
 require_once('../../../private/initialize.php');
 
+require_login();
+
 if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/pages/index.php'));
 }
@@ -33,9 +35,11 @@ if(is_post_request()) {
 
 }
 
-$page_set = find_all_pages();
-$page_count = mysqli_num_rows($page_set);
-mysqli_free_result($page_set);
+//$page_set = find_all_pages();
+//$page_count = mysqli_num_rows($page_set);
+//mysqli_free_result($page_set);
+
+$page_count = count_pages_by_subject_id($page['subject_id']);
 
 ?>
 
@@ -44,7 +48,7 @@ mysqli_free_result($page_set);
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/staff/pages/index.php'); ?>">&laquo; Back to List</a>
+<a class="back-link" href="<?php echo url_for('/staff/subjects/show.php?id=' . h(u($page['subject_id']))); ?>">&laquo; Back to Subject page</a>
 
   <div class="page edit">
     <h1>Edit Page</h1>

@@ -1,0 +1,32 @@
+User Authentication
+
+
+-admin creates a user in the database
+-password is encrypted before restored
+-user logs in via a login form
+-application searches for the username in the database
+-if the username is found, it encrypts the form password and compares it with the encrypted stored password
+-if the passwords match, then it sets a value in the session to the user ID and redirects to a post-login page
+-user requests additional password-protected pages
+-application checks the session data for the user ID
+-if present, it returns the requested page
+-if absent, redirects to the login form
+-user logs out
+-user ID stored in session is removed
+
+
+Encrypting passwords
+-never store passwords in plain text
+-users reuse passwords
+-use one-way encription
+-same inputs + same hashing algorithm = same output
+
+-encrypts the password, then stores it
+-encrypts the attempted password, then compares it to the stored password
+-encryption algorithm: one-way, strong, slow
+-bcrypt, based on Blowfish cipher
+
+password_hash($password, PASSWORD_DEFAULT);
+password_hash($password, PASSWORD_BCRYPT, ['cost => 10]);
+password_verify($password,$hashed_password);
+

@@ -1,0 +1,15 @@
+Understanding Nested Resources
+-resource: set of data or functionality of a single type
+-subject, pages, admins
+-nested resource: a resource inside another resource
+-dependent
+
+-no direct access to pages
+-access pages through subjects
+-group pages by subject
+-all links and redirects must work with the new structure
+
+Nested redirects
+-links
+-form actions
+
