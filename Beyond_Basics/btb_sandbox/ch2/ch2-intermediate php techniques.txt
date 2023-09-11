@@ -1,0 +1,12 @@
+32 bit - december 1902 to january 2037
+64 bit - billiion of years
+
+mktime() returns false if we give an invalid date
+
+Variables that are declared inside the php document are in the global scope
+Variables declared inside a function are in local scope.
+
+static - value sticks around in local context
+global - modifications brought by local variables apply to the global scope
+
+reference - allow variables to refer to the same content as other variables
