@@ -1,0 +1,44 @@
+-extends == the child class inherits its behaviour from the parent class
+-inherits the default behaviour of the class, not its instances
+-we can override the characteristics of the main class
+
+-public = everywhere
+-private = in scope of the class
+-protected = in scope of class and its subclasses
+
+-var is the same thing as public
+
+-with static, the attribute or the method is around even if there is no instance
+-static variable is tied to the class itself
+-static variables are shared between parents and children
+-static is useful when we want, for example, to keep track of all students created, or the types of students that can be created, etc
+
+-Student::$total_students
+-Paamayim Nekudotayim
+-paam = One
+-ayim = Doubled
+-nekudot = Dot
+-ayim = Doubled
+-Double Colon (in Hebrew)
+
+
+-self is used to access static or class variables or methods and 
+-this is used to access non-static or object variables or methods. 
+-So use self when there is a need to access something which belongs 
+-to a class and use $this when there is a need to access a property 
+-belonging to the object of the class.
+
+-when working with static methods, use parent::, but the only time
+-we should use it with instance methods is when we're trying to
+-actually access the parent method
+
+-cloning will not change the values of the base class, only the current
+-child class
+
+-comparison operator == -have the same attributes
+-identity operator === -point the same reference object
+
+COMPARING OBJECTS
+-references: == - yes === - yes
+-instances with matching attributes: == - yes === - no
+-instances with different attributes: == - no === - no

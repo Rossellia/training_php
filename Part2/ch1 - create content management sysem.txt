@@ -1,0 +1,25 @@
+mysql -u root -p
+
+show databases;
+
+CREATE DATABASE globe_bank;
+
+GRANT ALL PRIVILEGES on globe_bank.*
+TO 'webuser'@'localhost'
+IDENTIFIED BY 'secretpassword';
+
+exit
+
+
+mysql -u webuser -p globe_bank <path/to/file.sql  ------read this file and send it in to globe_bank DATABASE
+
+mysql -u webuser -p globe_bank
+
+show tables;
+
+select * from subjects;
+
+show fields from pages;
+
+select * from pages;
+

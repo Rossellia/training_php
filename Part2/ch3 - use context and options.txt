@@ -1,0 +1,18 @@
+The Public Context
+find_all_visible_subjects()
+find_all_subjects() and skip not find_all_visible_subjects
+find_all_subjects($visible = false)
+find_all_subjects($options=[]) --best one in the long run
+
+Insecure Direct Object Reference
+-IDOR
+-code fails to verify a user;s authorization before giving access to a restricted resource
+-viewing something you should not be able to see
+-ranked #4 security threat by OWASP
+
+Allow HTML in Dynamic Content
+-symbolic language
+-markdown
+-html purifier
+-strip_tages($string, $allowable_tags=")
+    nl2br($string) --new line to br

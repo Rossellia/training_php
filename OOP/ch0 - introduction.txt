@@ -1,0 +1,5 @@
+Visibility Modifiers
+
+-public = anywhere
+-private = inside this class only
+-protected = inside this class and its subclasses

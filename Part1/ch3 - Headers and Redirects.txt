@@ -1,0 +1,23 @@
+-header($string);
+    header("Content-Type:application/pdf");
+    header("HTTP/1.1 404 Not Found");
+-headers are sent before page
+-changes must be made before ANY HTML output
+
+
+-302 redirect 
+    HTTP/1.1 302 Found
+    Location: path
+    header("Location: login.php");
+
+-output bufferin
+    data in output buffer is editable
+    headers can be changed
+    whitespace can be sent before header edits and redirects
+
+
+-php.ini file in "loaded configuration file"
+-ob_start() = start output buffering, must come before any data
+-ob_end_flush() - no need to explicitly call it, it's auto called at the end of php code
+
+-Every response that uses the HTTP protocol includes a header.

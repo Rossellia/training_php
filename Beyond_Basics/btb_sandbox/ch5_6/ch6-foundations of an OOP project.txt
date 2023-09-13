@@ -1,0 +1,29 @@
+__autoload($class_name) -- when you forget to require/load a file, autoload takes care of that, but it's no longer supported
+-use spl_autoload_register(function($class_name)) instead
+
+-Stylesheet link is relative to the site, not the local root
+
+LATE STATIC BINDING
+-any time we use self in a static method, it refers to the actual object where it resides, not the class inheriting it
+-when PHP loads up the DatabaseObject class, it binds every occurence of the word self to the class before the User class is even been defined
+-the binding happens early, when it is created, not late, when the object is called
+-$this always refers to the current instance
+
+This problem is called early static bindings
+-Workarounds:
+--avoid static methods
+--$user = User::find_by_id(1);
+--$user = new User();
+--$user = $User->find_by_id(1);
+
+--deduce the class name 
+--get_class()
+--returns DatabaseObject
+
+--LATE STATIC BINDINGS 
+--get_called_class()
+--static:: instead of self::
+--static:: -- scope resolution operator to say I want you to make a late static binding, a binding that happends at runtime, 
+           -- not back when you were defined, at the very beginning
+
+#44

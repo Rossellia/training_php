@@ -1,0 +1,53 @@
+__FILE__ - tells the file that is loaded
+__LINE__ - tells the line number, it may not be what we expect with include files
+
+Whenever a website is no longer in development and is available to the public:
+-be vigilant about exposing your site to hacking
+-create a separate directory for uploaded files
+-develop permissions to give you and extra layer of defense
+-grant as few permissions as it takes to get the job done
+
+Who am I?
+-often: nobody
+-sometimes: www, apache
+
+ls
+ls -la 
+ps aux | grep httpd
+
+chown
+chmod
+
+sudo chown www file_permissions.php
+sudo chmod 777 file_permissions.php
+sudo chmod 744 file_permissions.php
+sudo chmod 600 file_permissions.php
+sudo chmod 666 file_permissions.php
+
+Safe Mode
+safe_mode - nu mai gasesc
+--we can't manipulate files we don't own, so safe_mode can't be on -- nu mai exista
+--chown unusable in php, well, it is not recommended, choose chmod instead
+
+Accessing files
+-fopen(filename, mode) --opens file whether it exists or not, if it doesn't exist, then it is created
+                       -- r = read from start               ALTERNATE READ & WRITE -r+
+                       --w =  truncate, write from start                           -w+
+                       --a = append, write from end                                -a+
+                       --x = write from start (can't exist)                        -x+
+
+File line endings
+-win                    \r\n 
+-mac, linux, unix       \n
+
+
+File mode modifiers
+-t translate windows line endings (use \r\n)
+-b binary mode(don't translate)
+-b is the default on all platforms since PHP 4.3.2
+
+sudo chmod 777 . --cand directorul curent nu are permisiunile necesare 
+
+HANDLE DOESN'T WORK WITH CHMOD, IT ONLY WORKS WITH fwrite, fread, etc
+
+To delete files we must close files first, can't delete open files. + Must have permission on folder containing the file.

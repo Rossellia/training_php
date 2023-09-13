@@ -1,0 +1,34 @@
+-unclutter the brain
+-easier to develop section by section
+-constant reference for how sections fit into the project
+
+Public Area
+
+-Site Pages
+--Navigation
+--Page content
+--Read only
+
+
+Admin Area
+
+-Login Page
+--Form
+--Username
+--Password
+
+-Admin Menu
+--Manage content
+--Manage admins
+--Logout
+
+-Manage content
+--Subjects
+--Pages
+
+-Manage admins
+-.admins
+
+-Logout
+--Do Logout
+--back to login

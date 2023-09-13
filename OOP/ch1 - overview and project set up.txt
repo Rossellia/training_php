@@ -1,0 +1,32 @@
+OOP
+-data structures which hold values and functions
+-php is a scripting or procedural language
+-oop features added in PHP v5.0
+
+
+DO YOU NEED OOP?
+-simple site = OOP adds unnecessary complexity
+-complex site = OOP adds necessary simplicity
+-database driven sites generally benefit from OOP
+
+OBJECTS
+-code grouped by a common theme or purpose
+-create abstractions in code for real-world objects
+
+OBJECT PROPERTIES
+-the dress is green
+-the table is four feet long and two feet wide
+
+OBJECT METHODS
+-allow objects to "know" how to perform tasks
+-use properties, call other METHODS
+-shopping cart:total, add_to_cart
+-complexity packaged into a simple function 
+
+OBJECTS ARE USEFUL
+-code organization is easier to maintain
+-adds clarity and reduces complexity
+-simple rules allow complex interactions
+-emphasizes data over procedure
+-modular, reusable code 
+

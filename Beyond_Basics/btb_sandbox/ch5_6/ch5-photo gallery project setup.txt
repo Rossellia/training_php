@@ -1,0 +1,41 @@
+Public
+-overview of images
+-pagination
+-full size image view
+-site visitor comments
+
+Admin
+-log in
+-create admin users
+-upload images
+-delete images
+-review/delete comments
+
+
+Objects
+-User 
+-Photograph 
+-Comment
+-Databse 
+-Session
+-Pagination 
+
+
+CREATE DATABASE photo_gallery;
+USE photo_gallery;
+
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=2;
+
+INSERT INTO `users` VALUES (1,'kskoglund','secretpwd','Kevin','Skoglund');
+
+
+GRANT ALL PRIVILEGES ON photo_gallery.* TO 'gallery'@'localhost' identified by 'php0TL123';
