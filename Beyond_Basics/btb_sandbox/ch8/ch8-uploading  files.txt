@@ -5,3 +5,8 @@ upload_max_filesize - 2M
 max_execution_time - 30 (in seconds)
 max_input_time - -1 (no limit)
 memory_limit - 128M
+
+
+$_FILES
+basename - get just the name of the file + ensures that the system doesn't get hacked
+move_uploaded_file() - only moves files that have been uploaded, returns false if it couldn't move the file, so it works with if

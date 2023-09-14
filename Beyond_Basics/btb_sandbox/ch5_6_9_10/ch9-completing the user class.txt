@@ -1,0 +1,12 @@
+once we perform user delete, the user id is still around, we still have the instance of our object around, the php instance still exists
+
+
+abstracting the attributes - pull the attributes with get_object_vars($this);
+                           - get them with $this->attributes()
+                           - join them with join(", ", array_keys($attributes)) -for names
+                           - join them with join(", ", array_values($attributes)) -for values
+                           - FOR UPDATE FUNCTION WE NEED ATTRIBUTE PAIRS
+
+get_object_vars() - returns associative array with ALL attributes for the class, including attributes that may not have corresponding db fields + private & protected attributes
+SOLVE: create another attribute that keeps track of all the attributes that have db fields associated with them
+Am mai putea folosi si SQL's show fields

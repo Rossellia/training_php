@@ -1,0 +1,20 @@
+
+DROP TABLE IF EXISTS `photographs`;
+CREATE TABLE `photographs` (
+  `id` int(11) NOT NULL auto_increment,
+  `filename` varchar(255) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `size` int(11) NOT NULL,
+  `caption` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`)
+);
+
+
+SHOW TABLES;
+SHOW FIELDS FROM photographs;
+
+ls -la
+sudo chown www images;
+SAU  sudo chmod 777;
+
+move_uploaded_file($this->temp_path, $target_path) - attempt to move the file from the temporary path to the path we want
