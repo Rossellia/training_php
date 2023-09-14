@@ -3,6 +3,8 @@ require_once(INCLUDES_PATH.DS.'database.php');
 
 class DatabaseObject{
     protected static $table_name = '';
+    protected static $db_fields = array();
+    //protected static $db_fields = array('id', 'username', 'password', 'first_name', 'last_name');
    //Common Database Methods
 
    public static function find_all(){
@@ -52,14 +54,40 @@ private static function instantiate($record){
 
 
 }
+protected function attributes() { 
+    // return an array of attribute keys and their values
+  //return get_object_vars($this);
+    $attributes = array();
+	foreach(static::$db_fields as $field) {
+	    if(property_exists($this, $field)) {
+	      $attributes[$field] = $this->$field;
+	    }
+	}
+	return $attributes;
+}
 
 private function has_attribute($attribute){
     // get_object_vars returns an associative array with all attributes 
     // (incl. private ones!) as the keys and their current values as the value
-    $object_vars = get_object_vars($this);
+    //$object_vars = get_object_vars($this);
     // We don't care about the value, we just want to know if the key exists
     // Will return true or false
-    return array_key_exists($attribute, $object_vars);
+    //return array_key_exists($attribute, $object_vars);
+    return array_key_exists($attribute, $this->attributes());
 }
+
+protected function sanitized_attributes() {
+    global $database;
+    $clean_attributes = array();
+    // sanitize the values before submitting
+    // Note: does not alter the actual value of each attribute
+    foreach($this->attributes() as $key => $value){
+      $clean_attributes[$key] = $database->escape_value($value);
+    }
+    return $clean_attributes;
+  }
+
+  
+
 
 }

@@ -8,6 +8,10 @@ if (!$session->is_logged_in()) { redirect_to("login.php"); }
 		<a href = "logout.php"> Logout </a>
 		<br>
 		<a href = "logfile.php"> To log </a>
+		<br>
+		<a href = "photo_upload.php"> Upload Photo </a>
+		<br>
+		<a href = "list_photos.php"> List Photos </a>
 		
 		</div>
 		

@@ -46,5 +46,7 @@ require_once(INCLUDES_PATH.DS.'database_object.php');
 
 // load database-related classes
 require_once(INCLUDES_PATH.DS.'user.php');
+require_once(INCLUDES_PATH.DS.'photograph.php');
+
 
 ?>
