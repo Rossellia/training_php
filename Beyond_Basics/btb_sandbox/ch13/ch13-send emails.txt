@@ -1,0 +1,17 @@
+echo $PATH
+which sendmail
+
+ls -la php*
+sudo nano php.ini.default
+
+SMTP
+-simple mail transfer protocol
+
+Essential SMTP Info
+-server/host
+-port 
+-authentication
+-username
+-password
+
+--helps prove we are not a spammer

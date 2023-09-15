@@ -1,0 +1,18 @@
+
+USE photo_gallery;
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL auto_increment,
+  `photograph_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `photograph_id` (`photograph_id`)
+);
+
+
+ALTER TABLE comments ADD INDEX(photograph_id);
+
+SHOW FIELDS FROM comments;
