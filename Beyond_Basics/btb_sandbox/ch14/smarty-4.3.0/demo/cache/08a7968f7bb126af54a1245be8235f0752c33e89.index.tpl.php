@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-09-18 11:46:59
+/* Smarty version 4.3.0, created on 2023-09-18 12:17:38
   from 'D:\Programs\XAMPP\htdocs\PHP\Beyond_Basics\btb_sandbox\ch14\smarty-4.3.0\demo\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_65081c933a85c9_68667847',
+  'unifunc' => 'content_650823c22a77b7_14436825',
   'has_nocache_code' => true,
   'file_dependency' => 
   array (
@@ -30,7 +30,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ),true)) {
-function content_65081c933a85c9_68667847 (Smarty_Internal_Template $_smarty_tpl) {
+function content_650823c22a77b7_14436825 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <HTML>
 <HEAD>
@@ -43,7 +43,7 @@ function content_65081c933a85c9_68667847 (Smarty_Internal_Template $_smarty_tpl)
 
     <b>                Title: Welcome To Smarty!
         </b>
-    The current date and time is 2023-09-18 11:46:59
+    The current date and time is 2023-09-18 12:17:38
 
     The value of global assigned variable $SCRIPT_NAME is /php/Beyond_Basics/btb_sandbox/ch14/smarty-4.3.0/demo/index.php
 
@@ -171,8 +171,8 @@ This is an example of the html_select_time function:
 <option value="08">08</option>
 <option value="09">09</option>
 <option value="10">10</option>
-<option value="11" selected="selected">11</option>
-<option value="12">12</option>
+<option value="11">11</option>
+<option value="12" selected="selected">12</option>
 </select>
 <select name="Time_Minute">
 <option value="00">00</option>
@@ -192,7 +192,7 @@ This is an example of the html_select_time function:
 <option value="14">14</option>
 <option value="15">15</option>
 <option value="16">16</option>
-<option value="17">17</option>
+<option value="17" selected="selected">17</option>
 <option value="18">18</option>
 <option value="19">19</option>
 <option value="20">20</option>
@@ -221,7 +221,7 @@ This is an example of the html_select_time function:
 <option value="43">43</option>
 <option value="44">44</option>
 <option value="45">45</option>
-<option value="46" selected="selected">46</option>
+<option value="46">46</option>
 <option value="47">47</option>
 <option value="48">48</option>
 <option value="49">49</option>
@@ -275,7 +275,7 @@ This is an example of the html_select_time function:
 <option value="35">35</option>
 <option value="36">36</option>
 <option value="37">37</option>
-<option value="38">38</option>
+<option value="38" selected="selected">38</option>
 <option value="39">39</option>
 <option value="40">40</option>
 <option value="41">41</option>
@@ -296,11 +296,11 @@ This is an example of the html_select_time function:
 <option value="56">56</option>
 <option value="57">57</option>
 <option value="58">58</option>
-<option value="59" selected="selected">59</option>
+<option value="59">59</option>
 </select>
 <select name="Time_Meridian">
-<option value="am" selected="selected">AM</option>
-<option value="pm">PM</option>
+<option value="am">AM</option>
+<option value="pm" selected="selected">PM</option>
 </select>
 </form>
 

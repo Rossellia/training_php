@@ -1,0 +1,28 @@
+-CakePHP is a free, open-source, rapid development framework for PHP
+
+Framework Based on MVC
+-CakePHP is an MVC framework
+--separates the code into areas which allows for rapid development
+--simplifies the mundane and repetitive tasks in developing web applications
+
+
+CakePHP
+-similar to c# MVC Framework
+-clean URLs
+--out of the box CakePHP has nice URLs
+--does not use index.php which is prevalent in post PHP frameworks
+-separates presentation layer from business and logic layer
+-easily extendable
+-active community
+-active development team
+
+
+Overview of MVC
+-separates an application into three parts
+
+Model
+-business logic layer which interacts with the database
+--save, retrieve, update, delete - all queries
+-handles all data processing, validation and associations, plus anything else related to the data
+
+View
