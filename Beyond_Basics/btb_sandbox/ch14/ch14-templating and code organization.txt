@@ -1,0 +1,47 @@
+Models
+-comment
+-photograph
+-user
+
+--have a relationship with the database
+--database_object can be considered model, pagination and session can be considered helpers instead
+
+
+View
+-index.php - top is considered controller, bottom is considered view
+-refactoring == take things from the view and set them in the controller instead and take some things from the controller and push them into the model
+
+----Data comes from the database to the model, from the model to the controller, from the controller to the view
+----Controllers are getting things organized, making all the calls that need to be made, so that when it's done, we can render the view
+----The view is the presentation layer, there isn't much complicated code in the view
+
+------To fix the mistake of merging controllers with views, we can use templates
+
+
+Templating
+1.Set variables/include PHP file
+2.Load file/search and replace
+
+
+Smarty Template Engine
+https://www.smarty.net
+-somehow it still exists
+
+PHPMailer & Smarty 
+-libraries of code that we can call upon
+
+Libraries
+-PEAR = PHP Extension and Application Repository
+-PECL = PHP Extension Community Library
+--code we can find: database connectivity, encryption, caching, benchmarking, internationalization, common tasks
+
+Frameworks
+--libraries take certain common tasks that we do often and make them easier, having code that we can reuse, 
+--a framework takes the overall process of web development and makes that something we can reuse, they also have predefined places where you put your code
+-Akelos
+-Cake
+-CodeIgniter
+-Kohana
+-Symfony
+-Zend framework
+

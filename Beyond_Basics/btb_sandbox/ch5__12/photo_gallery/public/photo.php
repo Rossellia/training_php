@@ -38,6 +38,8 @@
 	}
 	
 	$comments = $photo->comments();
+
+  //include('photo_template.php');
 	
 ?>
 <?php include_layout_template('header.php'); ?>
