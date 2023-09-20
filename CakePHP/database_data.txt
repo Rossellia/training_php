@@ -1,0 +1,13 @@
+create database Catalog;
+
+use Catalog;
+create table if not exists `items`(
+`id` int(10) not null auto_increment,
+`title` varchar(200) not null,
+`year` int(4) not null,
+`length` varchar(100) default null,
+`description` text not null,
+primary key(`id`)
+)ENGINE=InnoDB;
+
+show fields from Catalog.items;

@@ -1,0 +1,139 @@
+Models
+-each model is a class
+-each model represents a table in the database
+--not limited to just table representation, but anything that manipulates data
+-a simple model class
+--class Item extends AppModel {}
+--provides the developer with the ability to create queries and save and delete data
+--all made possible because of inheritance
+---Item->AppModel->Model
+-models have mani possibilities
+--in this course we will cover a few of those, including:
+---data validation
+---associated models
+---model attributes
+
+./cake
+
+Baking TIme
+-quick commands for crud
+-commands
+--select individual
+---./cake bake
+--pass in the command
+---./cake bake model
+---./cake bake controller
+---./cake bake view
+--model, view, controller
+---./cake bake all
+
+
+CREATE TABLE IF NOT EXISTS `categories` (
+    `id` INT(10) NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(50) NOT NULL, 
+    `length_type` VARCHAR(50) NOT NULL,
+    PRIMARY KEY(`id`) 
+);
+
+./cake bake model Categories
+./cake bake controller Categories
+./cake bake template Categories
+
+ALTER TABLE `items` 
+ADD `category_id` INT NOT NULL DEFAULT 0,
+ADD `created` DATETIME NULL,
+ADD `modified` DATETIME NULL
+
+Linking Models Together
+-two models
+--we now have two models in our application
+--currently they are independent, but we need them to be dependent
+---item model relies on the Category model
+--this is considered a one to many
+---there is one category to many items
+-four association types
+--one to one
+--one to many
+--many to one
+--many to many
+-cover three of the four
+--one to one, one to many, many to one
+
+One to One association
+-variable name: $hasOne
+--set the value to the model you are referencing
+--example - main model `Cake`
+---public $hasOne = 'CakeDetail';
+-parent uses this variable
+--model names: Cake and CakeDetail
+--the main model(Cake) will indicate that it has the ssociation with the other model (CakeDetail)
+---Cake can have one CakeDetail
+
+One to Many Association
+-variable name: $hasMany
+--set the value to the model you are referencing
+--example: main model `User`
+---public $hasMany = 'Recipe';
+-parent uses this variable
+--model names: User and Recipe
+--the main model (User) will indicate tht it has the association with the other model (Recipe)
+---User can have many Recipes
+
+Many to One Association
+-compliment setting to the hasOne and hasMany associations
+--see the data from the other direction
+-variable name: $belongsTo
+--set the value to the model that is referencing it
+--example: main model 'Cake', currently in 'CakeDetail'
+---public $belongsTo = 'Cake';
+-child uses this variable
+--model names:Cake and CakeDetail
+--the child model (CakeDetail) will indicate that it has the association with the "parent" model (Cake)
+---CakeDetail belongs to Cake
+
+Detalied Variables
+-more control can be given
+--each association hs the ability to have more control over the association between two tables
+---helpful, especially if the database does not follow the CakePHP naming conventions
+
+class Cake extends AppModel{
+    public $hasOne = Array(
+        'CakeDetail => array(
+            'className' => 'CakeDetail',
+            'dependent' => true
+        )
+    );
+}
+
+Has One
+-possible keys for $hasOne association array
+--className
+---name of the model associated to
+--foreignKey
+---foreign key found in the other model
+-other possibilities
+--conditions, fields, order, dependent
+
+Has Many
+-possible keys for $hasMany association array
+--className
+---name of the model associated to
+--foreignKey
+---foreign key found in the other model
+-other possibilities
+--conditions, order, dependent, exclusive, offset, limit, finderQuery
+
+Belongs Together
+-possible keys for $belongsTo association array
+--className
+---name of the model associated with
+--foreignKey
+---foreign key in the current model
+--type 
+---the type of join to use in the SQL query(defaults to LEFT). These are lowercase
+--order
+---use a standard associated array that is used in the find() query call 
+-other possibilities
+--conditions, fields, counterCache, counterScope
+
+#05-05

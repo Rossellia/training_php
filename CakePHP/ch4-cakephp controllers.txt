@@ -1,0 +1,161 @@
+Routes
+-parse the request URL
+--extracts parameters
+---e.g. controller,action,additional values passed in the url
+--- http://catalog/items/view/12
+-the request URL parameters are then mapped to a controller action
+--a specific action in a specific controller class 
+---items controller
+---view action (function)
+---12 value to use with the database
+
+Controller
+-the controller interacts with the model 
+--controller calls on the model if there is a need to gain access to the application's data
+--model interacts with the database and returns data back to the controller
+-the controller then interacts with the view
+--controller can use the data from the model and manipulate it for the benefit of the view
+--after the controller has prepared the data, the controller passes the data off to the view
+
+Setting Variables
+-passing variables to the view
+--the set() method is used to pass the variables to the view
+--first parameter
+---provide a name
+--second parameter
+---provide the value or data
+-example:
+--controller
+---$this->set('pizza','pepperoni');
+--view
+---Their favourite pizza is <?php echo $pizza; ?>
+
+Query the Database
+-acessing the database model in Controller
+--access the model via $this->ModelName
+---example:
+----$this->item
+--retrieve data from the model using find() method
+---example:
+----$this->Item->find('all');
+-find() parameters
+--first parameter:
+---all/first/count/neighbors/list/threaded
+--second parameter:
+---array of data
+----conditions/fields,joins/limit/offset/order/page/group/callbacks
+--example:
+---$this->Item->find('all, array('order' => 'title DESC'));
+
+Throw and Exception
+-CakePHP has many error exceptions
+-Handling Errors
+--throw new NotFoundException
+--example:
+---throw new NotFoundException(__("Your item was not found"));
+
+Form Data 
+-CakeRequest
+--default request object in CakePHP. Passed by reference to the various layers of an application
+--assigned to $this->request
+-Check how the data was Sent 
+--is()
+--takes one parameter
+---post/get/put/delete/head/options/ajax/ssl/flash/mobile
+--example:
+---$this->request->is('post');
+
+Create & Save
+-adding a new item into a database 
+--create()
+--resets the model state for saving new information
+--clears out the model $id value
+--example:
+---$this->ModelName->create();
+-saving the data
+--save()
+--parameters
+---1st: array-formatted data to be saved
+---2nd: allows you to side step validation (bool) - optional
+---3rd: supply a list of model fields to be saved - optional
+--example
+---$this->ModelName->save($this->request->data);
+
+Redirect
+-sending a user to a different page
+--sometimes it is necessary
+--redirect()
+--parameters:
+---string action (if in same controller)
+---array controller & action
+---relative path
+--example:
+---$this->redirect('index');
+---$this->redirect(array('controller'=>'Items','action'=>'index'));
+---$this->redirect('/Items/thanks');
+
+Saving an existing entry
+-editing an item
+--use the same save method that we utilized in the add() action, but we eliminate the need for the create() method to be called beforehand.
+--example:
+---$this->ModelName->save($this->request->data);
+--override the 'id' in our model
+---example:
+----$this->ModelName->id=$id;
+----$this->request->data=$item;
+
+Set and Display Message
+-session component
+--cakephp provides a messaging system with the session component
+-adding the session component to your controller
+--public $components=array('Session');
+-using the session component
+--example:
+---$this->Session
+--access the method
+---setFlash()
+---Parameter 
+----String message you want to Display
+---Example 
+----$this->Session->setFlash(__("Your record was saved."));
+
+Does it exist?
+-previous determination
+--$data = $this->ModelName->findById($id);
+--if(!$data)
+---Throw Exception
+-check to see if an item exists in the Database
+--exists()
+--returns bool value
+--parameters
+---$id(optional)
+--examples:
+---$this->ModelName->exists($id);
+---$this->ModelName->id=$id;
+---$this->ModelName->exists();
+
+Delete Item
+-deleting an item in the database
+--delete()
+--returns bool value
+--parameters
+---$id(optional)
+--examples:
+---$this->ModelName->delete($id);
+---$this->ModelName->id=$id;
+---$this->ModelName->delete();
+
+Render method
+-normal behavior
+--calls the viewer template of the same name as the action
+---index()=>index.ctp
+--called automatically at the end of the action in the controller.
+-override
+--reuse,plugins,elements,etc.
+--render();
+--parameter
+---name of the template you would like to use
+--example:
+---$this->render('index');
+---$this->render('/Cakes/index');
+----app/View/Cakes/index
