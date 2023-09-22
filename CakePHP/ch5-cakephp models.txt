@@ -136,4 +136,119 @@ Belongs Together
 -other possibilities
 --conditions, fields, counterCache, counterScope
 
-#05-05
+Model attributes
+-Overriding the default model behavior
+-beneficial
+--more control
+--helps with legacy databases
+-CakePHP model attributes
+--list of most used: models/model-attributes
+--review a few of the more used attributes
+
+
+A few model attributes
+-useDbConfig
+--specifies the database connection that will be used. Defaults to the `default` datbase connection
+
+-useTable
+--specifies the table name. Set this if not adhering to CakePHP naming conventions
+
+-primaryKey
+--use this attribute if the primary key is something else besides `id` (CakePHP naming conventions)
+
+-displayField
+--specifies which database field should be used as the label. Used in scaffolding and in the find(`list`) calls. Default will use `name` or `title`
+
+-validate
+--declares rules that the model uses for validating data
+
+class Item extends AppModel{
+    public $useDbConfig = 'live';
+    //default
+    public $useTable = 'products'
+    //items
+    public $primaryKey = 'itemID';
+    //id
+    public $displayField = 'productName';
+    //name, title
+}
+
+Validation Array
+-variable name: $validate
+-example: 
+    class ModelName extends AppModel{
+        public $validate = array();
+    }
+-the array
+--associated array(key, value)
+---key = field name
+---value = rule name (type of validation to perform)
+--rule name
+---pre-defined
+---list of core validation ruls (ceva link de carte) /models/data-validation.html#core-validation-rules
+--example: 
+    public $validate =  array('user_email' => 'email');
+
+Validation Options
+-list of validation Options
+--rules you can use in your data validation
+--commonly used validation rules
+-validation ruls
+--alphaNumeric-alphabetic characters and integers
+--between - range of values
+--date - date format
+--email - email format
+--maxLength - max lenght of a value
+--minLength - min length of a value
+--notEmpty - the field must have some type of value
+--numeric - integers only
+
+Detailed Validation
+-rule naming array
+--each rule name can have its own array of information
+--allows for better control over each field validation
+--when using this array there are only five keys that can be used
+---rule,required,allowEmpty,on,message
+--example:
+    public $validate = array(
+        'fieldName' => array(
+            'rule' => 'ruleName',
+            'required' => true,
+            'allowEmpty' => false,
+            'on' => 'create',
+            'message' => 'Your Error Message'
+        )
+    );
+
+5 keys
+-rule
+--name of the rule you will be using (the `rule` key is required when using the rule array)
+--if it isn't set, validation will not be performed on that field
+-required
+--true/false - makes sure the field is present in the data array
+--create/update - makes the field reuqired for either the create or update operation
+-allowEmpty
+--true/false - if set to false, the field must have some data present
+--differs in that the required makes sure the data key (filed) is in the data array
+-on
+--update/create - allows for a certain validation to be performed if the entry is being created or updated
+--default to null, meaning validation will be performed on both the update and create
+-message
+--custom validation message can be set with this key
+
+Magic Database fields
+-modified & created dates 
+--if either of these fields are defined in the database table, CakePHP will set the values automatically when an entry is either saved or updated in the database
+--each field must be set to the `datetime` field type in the table
+---default null
+--field names
+---modified 
+---created
+-created
+--set to the current date when an entry is added to the database
+-modified
+--set to the current date when an entry is added to the database
+--automatically updated to the current date when the current entry is updated in the database
+
+
+
