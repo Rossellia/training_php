@@ -13,6 +13,6 @@ Solving the CakePHP training courses of Jill Gundersen
 2. Installation of CakePHP -- COMPLETED
 3. Getting Started -- COMPLETED
 4. CakePHP Controllers -- COMPLETED
-5. CakePHP Models -- IN PROGRESS
-6. CakePHP Views -- IN PROGRESS
+5. CakePHP Models -- COMPLETED
+6. CakePHP Views -- COMPLETED
 7. CakePHP Authentication -- IN PROGRESS
