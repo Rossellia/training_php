@@ -47,7 +47,7 @@ class UsersController extends AppController
     public function logout(){
         $this->set('title_for_layout', 'Users');
         $this->Auth->logout();
-        $this->redirect('/index/items');
+        $this->redirect('/items');
     }
     public function index()
     {
