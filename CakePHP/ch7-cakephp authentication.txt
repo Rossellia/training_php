@@ -1,0 +1,114 @@
+Authentication
+-editing content
+--we don't want just any user to be able to edit the site's content
+--limit the access to certain URLs based upon if a user is not logged in or not
+-authentication
+--identifying a user from the provided information (credentials - username and password)
+-types of authentication
+--FormAuthenticate
+---based on form post data
+--BasedAuthenticate
+---basic HTTP authentication
+--DigestAuthenticate
+---Digest HTTP authentication
+
+Authentication Setup
+-add a new table
+--create a new table `users`
+--following the CakePHP naming conventions
+-bake all
+--remember baking the CRUD?
+--navigate to the console folder
+--- ./cake bake all
+--- choose the users table
+
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` INT(10) NOT NULL AUTO_INCREMENT,
+    `last_name` VARCHAR(50) NOT NULL, 
+    `first_name` VARCHAR(50) NOT NULL,
+    `username` VARCHAR(50) NULL,
+    `password` VARCHAR(50) NULL,
+    `created` DATETIME NULL,
+    `modified` DATETIME NULL
+    PRIMARY KEY(`id`) 
+);
+
+Components 
+-what are components?
+--"Packages of logic that are shared between controllers" - CakePHP.Overriding
+-CakePHP list of components
+--pagination
+--sessions
+---this has already been implemented in the wesite
+--authentication
+--security
+--request handling
+--cookie
+-access control lists
+
+AuthComponent
+-AuthComponent
+--provides a modular way to identify, authenticate and authorize users
+--add 'auth' as an element to the $components array
+--example
+---public $components=array('Auth');
+
+Log In/Log Out
+-log in view
+--we need a new form to log in the users
+--this will entail adding new View and an action in the Users controller
+-auth->login()
+--authenticates the user from the log in form, no additional coding needed
+--example
+---$this->Auth->login()
+-log Out
+--no view needed, but we will need a way to log out the user
+-auth->logout()
+--logs the user out with no additional coding
+--example
+---$this->Auth->logout();
+
+beforeFilter()
+-method: beforeFilter 
+--used in the controller class, including the AppController
+--called before any controller action is called
+--this makes it ideal to check user permissions
+
+Auth Allow
+-Auth->allow()
+--utilize our new beforeFilter method to allow the user access to certain pages/actions
+--by default CakePHP will deny access to all pages if the user is not logged in
+--grand permissions
+---speicify the actions in the controllers that are allowed to be accessed if the user is not logged in
+--can be added site wide (AppController) or inside each of the controllers
+--example:
+---$this->Auth->allow('index','view');
+
+Is User Logged In?
+-limit certain content if a User is not logged in
+--in order to check if a user is logged in, we call the method user() from the AuthComponent class
+--example
+---AuthComponent::user()
+
+Passwords
+-field password compared
+--the auth->login() metod compares the log in the post data(hashed) to the table field data
+--passwords need to be saved in their hashed state 
+-how do we accomplish this?
+--we need to be able to intercept our post data before it gets saved in the database
+--CakePHP provides a nifty function called beforeSave()
+---this allows us to manipulate the data before sending it to be saved by the Model 
+-location
+--since the models in CakePHP deal with the data, this method is used in the Model class
+
+Password Hashing
+-password variable
+--all post data is stored in the data viariable with a key based on the Model name:
+---$this->data['ModelName']
+--the field in the database is the next key in the data associated array
+--example:
+---$this->data['User']['password']
+-AuthComponent provides a hashing method
+--AuthComponent::password()
+--example
+---AuthComponent::password($this->data['User']['password']);

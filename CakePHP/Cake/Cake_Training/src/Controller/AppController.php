@@ -37,6 +37,15 @@ class AppController extends Controller
      *
      * @return void
      */
+
+
+             
+    public function beforeFilter(Event $event)
+    {
+        //beforeFilter will always run before any actions in the controller
+        parent::beforeFilter($event);
+        $this->Auth->allow(array('index'));
+    }
     public function initialize()
     {
         parent::initialize();
@@ -45,7 +54,9 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth');
 
+        
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3/en/controllers/components/security.html
