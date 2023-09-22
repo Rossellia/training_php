@@ -15,6 +15,7 @@ class ItemsController extends AppController{
     
     public function edit($id = null)
     {
+        $this->set('title_for_layout', 'Items');
         if(!$id)
         {
 			// set a specific error with individual message
@@ -23,6 +24,10 @@ class ItemsController extends AppController{
         
         $data = $this->Items->findById($id)->first();
         $item = $this->Items->get($id);
+        $this->set(compact('item'));
+        $this->set('categories', $this->Items->Categories->find('list', array('order' => 'name')));
+
+
         $request_data = $this->request->getData();
         $request_data['id'] = $id;
         if(!$data)
@@ -49,7 +54,6 @@ class ItemsController extends AppController{
         
 		// default the form with data from the database
         //print_r($data);
-        $this->set(compact('item'));
         //print_r($this->request->data);
         //$this->request->data =  $data;
     }
@@ -57,12 +61,15 @@ class ItemsController extends AppController{
     
     public function add()
     {
+        $this->set('title_for_layout', 'Add An Item');
+        $item = $this->Items->newEntity();
         if($this->request->is('post'))
         {
 			// prepare the model to insert a new item in the database
             //$this->Items->create();
             
-            $data = $this->request->data;
+            //$data = $this->request->data;
+            
             // echo $data['title'];
             // $itemsTable = TableRegistry::getTableLocator()->get('Items');
             // $item = $itemsTable->newEntity();
@@ -70,7 +77,9 @@ class ItemsController extends AppController{
             // $item->description = $data['description'];
             // $item->year = $data['year'];
             // $item->length = $data['length'];
-            $item = $this->Items->newEntity($data);
+            //$item = $this->Items->newEntity($data);
+
+            $item = $this->Items->patchEntity($item, $this->request->getData());
             if($this->Items->save($item))
             {
                 $this->redirect('/items');
@@ -80,8 +89,11 @@ class ItemsController extends AppController{
                 // if the data fails do something
             }
         }
+        $this->set('categories', $this->Items->Categories->find('list', array('order' => 'name')));
+        $this->set(compact('item'));
     }
     public function index(){
+        $this->set('title_for_layout', 'Items');
         //calls the database
         //retrieves items from the Item table using the Item Model
         //stores the variables from our database and passes them to the view
@@ -102,13 +114,14 @@ class ItemsController extends AppController{
         #anything we put in this function will not be accessible to the outside world
     }
     public function view($id = null){
+        //$this->layout = '_default';
         if(!$id)
         {
             throw new NotFoundException(__("ID was not set."));
         }
         
 		// search the database based on the id (primary key) of the item 
-        $data = $this->Items->findById($id)->first();
+        $data = $this->Items->findById($id)->contain(['Categories'])->first();
         
         if(!$data)
         {
@@ -122,6 +135,7 @@ class ItemsController extends AppController{
 
     public function delete($id = null)
     {
+        $this->set('title_for_layout', 'Items');
 		// set the model to the id that you want to work with.
         //$this->Items->id = $id;
         
@@ -157,6 +171,7 @@ class ItemsController extends AppController{
 
     public function search($search = null)
     {
+        $this->set('title_for_layout', 'Items');
         if(!$search)
         {
             $data = $this->Items->find('all', array('order' => 'year'));

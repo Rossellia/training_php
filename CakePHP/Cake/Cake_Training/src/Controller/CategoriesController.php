@@ -19,6 +19,7 @@ class CategoriesController extends AppController
      */
     public function index()
     {
+        $this->set('title_for_layout', 'Categories');
         $categories = $this->paginate($this->Categories);
 
         $this->set(compact('categories'));
@@ -33,6 +34,7 @@ class CategoriesController extends AppController
      */
     public function view($id = null)
     {
+        $this->set('title_for_layout', 'Categories');
         $category = $this->Categories->get($id, [
             'contain' => [],
         ]);
@@ -47,6 +49,7 @@ class CategoriesController extends AppController
      */
     public function add()
     {
+        $this->set('title_for_layout', 'Categories');
         $category = $this->Categories->newEntity();
         if ($this->request->is('post')) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
@@ -69,6 +72,7 @@ class CategoriesController extends AppController
      */
     public function edit($id = null)
     {
+        $this->set('title_for_layout', 'Categories');
         $category = $this->Categories->get($id, [
             'contain' => [],
         ]);
@@ -93,6 +97,7 @@ class CategoriesController extends AppController
      */
     public function delete($id = null)
     {
+        $this->set('title_for_layout', 'Categories');
         $this->request->allowMethod(['post', 'delete']);
         $category = $this->Categories->get($id);
         if ($this->Categories->delete($category)) {

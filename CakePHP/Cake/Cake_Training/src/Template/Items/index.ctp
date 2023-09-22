@@ -6,6 +6,7 @@
         <th>Title</th>
 		<th>Year</th>
         <th>Length</th>
+		<th>Category Id</th>
         <th>Actions</th>
     </tr>
     <?php foreach ($items as $item): ?>
@@ -17,6 +18,7 @@
 			</td>
 			<td><?php echo h($item['year']); ?></td>
 			<td><?php echo h($item['length']); ?></td>
+			<td><?php echo h($item['category_id']); ?></td>
 			<td>
 				<?php echo $this->Html->link('Edit', 
 					array('action' => 'edit', $item['id'])); ?> | 
@@ -29,3 +31,5 @@
     <?php endforeach; ?>
     <?php unset($item); ?>
 </table>
+
+<?php echo $this->element('quote_block', array('quote'=>"To boldy go where no man has gone before")); ?>
