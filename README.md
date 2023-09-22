@@ -15,4 +15,4 @@ Solving the CakePHP training courses of Jill Gundersen
 4. CakePHP Controllers -- COMPLETED
 5. CakePHP Models -- COMPLETED
 6. CakePHP Views -- COMPLETED
-7. CakePHP Authentication -- IN PROGRESS
+7. CakePHP Authentication -- COMPLETED

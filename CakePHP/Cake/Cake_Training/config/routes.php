@@ -69,6 +69,19 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/items/add', ['controller' => 'Items', 'action' => 'add', 'add']);
     $routes->connect('/items/view', ['controller' => 'Items', 'action' => 'view', 'view']);
     $routes->connect('/items/search', ['controller' => 'Items', 'action' => 'search']);
+    $routes->connect('/categories', ['controller' => 'Categories', 'action' => 'index', 'index']);
+    $routes->connect('/categories/edit', ['controller' => 'Categories', 'action' => 'edit', 'edit']);
+    $routes->connect('/categories/delete', ['controller' => 'Categories', 'action' => 'delete', 'delete']);
+    $routes->connect('/categories/add', ['controller' => 'Categories', 'action' => 'add', 'add']);
+    $routes->connect('/categories/view', ['controller' => 'Categories', 'action' => 'view', 'view']);
+    $routes->connect('/users', ['controller' => 'Users', 'action' => 'index', 'index']);
+    $routes->connect('/users/edit', ['controller' => 'Users', 'action' => 'edit', 'edit']);
+    $routes->connect('/users/delete', ['controller' => 'Users', 'action' => 'delete', 'delete']);
+    $routes->connect('/users/add', ['controller' => 'Users', 'action' => 'add', 'add']);
+    $routes->connect('/users/view', ['controller' => 'Users', 'action' => 'view', 'view']);
+    $routes->connect('/users/login', ['controller' => 'Users', 'action' => 'login', 'login']);
+
+
 
 
     /*

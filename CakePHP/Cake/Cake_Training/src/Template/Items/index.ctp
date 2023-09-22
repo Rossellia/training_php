@@ -32,4 +32,4 @@
     <?php unset($item); ?>
 </table>
 
-<?php echo $this->element('quote_block', array('quote'=>"To boldy go where no man has gone before")); ?>
+<?php echo $this->element('quote_block', array('quote'=>"Someone really likes Star Trek")); ?>

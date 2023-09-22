@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <?php 
+        <?php
+
+
         echo $this->Html->css('styles');
         echo $this->fetch('css');
         ?>
@@ -18,6 +20,13 @@
 	            <ul>
 	                <li><a href="/Items">Items</a></li>
 	                <li><a href="/Categories">Categories</a></li>
+					<li><a href="/Users">Users</a></li>
+					<?php if($this->Session->read('Auth.User')) :?>
+						<li><a href="/Users/logout">Log Out</a?</li>
+					<?php else :  ?>
+						<li><a href="/Users/login">Log In</a></li>
+					<?php endif ; ?>
+					
 	            </ul>
 	        </div>
 			<div id="Search" class="widthWrapper">
