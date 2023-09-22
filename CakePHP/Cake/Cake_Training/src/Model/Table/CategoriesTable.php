@@ -33,6 +33,10 @@ class CategoriesTable extends Table
         $this->setTable('categories');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('Items')
+             ->setForeignKey('category_id')
+             ->setDependent(true);
     }
 
     /**
@@ -51,14 +55,17 @@ class CategoriesTable extends Table
             ->scalar('name')
             ->maxLength('name', 50)
             ->requirePresence('name', 'create')
-            ->notEmptyString('name');
+            ->notEmptyString('name', 'You need to provide a name');
+
 
         $validator
             ->scalar('length_type')
             ->maxLength('length_type', 50)
             ->requirePresence('length_type', 'create')
-            ->notEmptyString('length_type');
+            ->notEmptyString('length_type', 'You need to provide a length type, such as minutes, pages, etc');
 
         return $validator;
     }
+
+    
 }

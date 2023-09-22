@@ -67,6 +67,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/items/edit', ['controller' => 'Items', 'action' => 'edit', 'edit']);
     $routes->connect('/items/delete', ['controller' => 'Items', 'action' => 'delete', 'delete']);
     $routes->connect('/items/add', ['controller' => 'Items', 'action' => 'add', 'add']);
+    $routes->connect('/items/view', ['controller' => 'Items', 'action' => 'view', 'view']);
     $routes->connect('/items/search', ['controller' => 'Items', 'action' => 'search']);
 
 

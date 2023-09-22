@@ -8,7 +8,10 @@ protected $_accessible = [
     'title' => true,
     'year' => true,
     'length' => true,
-    'description' => true
+    'description' => true,
+    'category_id' => true,
+    'created' => true,
+    'modified' => true
 
 ];
 
