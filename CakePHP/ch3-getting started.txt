@@ -1,0 +1,108 @@
+Config 
+-some configuration files such as database connection, core configuration, bootstrapping
+
+Controller
+-application's controllers and components
+
+Lib
+-first-party libraries that do not come form third-parties or external vendors. 
+-keeps the libraries separte from thrid party vendors
+-libraries that we would create for our own application
+
+Locale
+-string files needed for internalization
+
+Model
+-application's models, behaviours, data sources
+
+Plugin
+-where plugin packages will be stored
+
+Test
+-directory that contains test cases and test fixtures for the application
+
+tmp
+-temporary data, such as caching
+
+Vendor
+-third party libraries and classes that will be included in the application
+
+View
+-all the presentation files
+-views, elements, helpers, layouts, error pages
+
+webroot
+-document root of the application in a production setup
+-CSS, JavaScript, images are also stored here
+
+Controller naming conventions
+-CamelCase
+-End with word "Controller"
+-Pluralized
+-examples:
+--DessertsController.php
+--LatestRecipesController.php
+-located in the Controller folder
+-- /app/Controller/DessertsController.php
+
+Naming Controller Functions
+-camelCased(lowercase first word)
+-no underscores
+-examples
+--cakes()
+--favoriteCookies()
+-protected/private functions 
+--any function you don't want to be accessed directly from the web should be prefixed with _ (_findLatestRecipe())
+
+
+Naming Views
+-named after the Controller functions they display
+-all lowercase
+-underscore to separate multiple words
+-examples:
+--cakes() -> cakes.ctp 
+--favouriteCookies->favourite_cookies.ctp 
+-located in the controller named folder of the view folder
+--create a folder inside the Views folder and name it the name of the Controller minus the "Controller" production
+-- /app/View/Desserts/favourite_cookies.ctp
+
+Naming Models
+-singular
+-CamelCase
+-examples:
+--Pastry.php
+--PuffPastry.php
+-located in the Model folder
+-- /app/Model/Pastry.php
+
+Naming Database Tables
+-table names correspond to the Model names
+-Pluralized
+-all lowercase
+-underscore to separate multiple words
+-examples:
+--Pastry.php->pastries 
+--PuffPastry.php->puff_pastries
+
+Naming Database Table Fields
+-primary key: id 
+-all lowercase
+-separate words with underscore
+-examples:
+--title
+--cake_name
+
+Naming When Joining Tables
+-foreign keys
+--singular name of the table followed by _id
+-examples:
+--cake table->cake_id
+--puff_pastries->puff_pastry_id
+-HABTM - Has and Belongs To Many (Many to Many)
+--named after the Tables
+--tables are in alphabetical order
+--underscore between two table names
+--pluralized
+
+Naming Conventions Helper 
+- http://inflector.cakephp.org

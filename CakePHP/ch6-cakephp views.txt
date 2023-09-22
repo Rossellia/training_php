@@ -1,0 +1,253 @@
+Views
+-presentation layer
+--display the desired output from the reqest to the user 
+-usually in html
+--can also be...
+---XML
+---JSON
+---RSS 
+---Files and Streaming Files
+-CakePHP Template Files
+--written in plain PHP 
+--.ctp ending
+---CakePHP supports other templating languages such as Smarty or Twig
+
+Parts of the View layer
+-view layer consists of 4 parts
+--layouts
+---the main layout of the website
+--views
+---displays a unique response based on the action being run 
+--elements
+---reusable code rendered inside of a view
+--helpers
+---provides view logic and helps build code for forms, pagination, etc.
+
+Views
+-display specific content
+--specific content for a specific site
+--we created a few in our catalog site
+--location
+---/app/Views/ControllerNme/view_name.ctp
+--view names are based on the controller action
+--override the default view by using 
+---$this->render('view_name);
+
+Extending Views
+-extending views
+--common views can be extended for use with detailed views
+---detailed views are the regular views associated with the controller associations
+--located in the app/Views directory inside the Common folder
+---/app/Views/Common/view.ctp
+--example of common view:
+---same header layout for all of the page views, the only difference is the title
+---example
+----$this->fetch('content'); - mandatory for all common views
+----$this->fetch('title');
+--detailed view
+---extend the common view
+---assign the title
+---exemple:
+----$this->extend('/Common/view');
+----$this->assign('title', 'New Title Name');
+
+
+Extending CSS 
+-specific page/view CSS 
+--the layout contains a fetch call for CSS 
+---$this->fetch('css');
+--normally in a view template you would "assign" the css
+---this changed in version 2.4
+---$this->Html->css('cssFile', null, array('inline' => false));
+
+Elements 
+-think reusability
+--bits of code
+---available on different pages
+---different locations
+--examples
+---sub navigation, quote box, ads
+-location
+--app/View/Elements/
+--template file (.ctp - just like all other view teplates)
+
+Using Elements
+-in your view
+--call the element method and pass as the parameter your element view name
+--example:
+---echo $this->element('quote_box');
+-passing variables into an element
+--a second parameter can be passed into the element method
+--associated array
+---key=the name of the variable
+---value=variable content\
+--example
+---echo $this->element('quote_box', array('quote'=>'CakePHP is awesome'))
+---echo $quote;
+
+Helpers
+-what are helpers?
+--"Helpers are component-like classes for the presentation layer of [our] application" - CakePHP site
+--they help create "well-formed markup"
+--basically they produce nuggets of code that we constantly use
+-include in controller
+--all helpers need to be included in the controller
+--set the variable $helpers in either the current controller or the AppController 
+--example:
+---public $helpers = array('Form', 'Html')
+-use
+--we have used some of these helpers throughout our catalog site
+--CakePHP has a number of Helpers, here is a list of them with the parameter value:
+---CacheHelper(Cache)
+---FormHelper(Form)
+---HtmlHelper(Html)
+---JsHelper(Js)
+---NumberHelper(Number)
+---Paginator - special scenario
+---RSS(Rss) 
+---SessionHelper(Session)
+---TextHelper(Text)
+---TimeHelper(Time)
+
+
+HtmlHelper
+-basic function of the HtmlHelper
+--the HtmlHelper generates code that is "well-formated" and used often
+--Helps with tags we often forget the syntax to
+---For example: Style sheets - We know it'a a link tag, but does the link tag take a "href" from the source file or a "src"?
+-lots of methods
+--the HtmlHelper has a lot of helpful methods, but we are only going to cover the following:
+---css
+---image
+---script
+--we will cover the basics of each
+
+HtmlHelper - CSS
+-updated
+--method has changed in version 2.4
+---this will not work with the current version of CakePHP we are working with
+-takes one or two parameters
+--focus only on the first parameter, second is optional
+-first parameter
+--css file name or an array of css file names
+---this is relative to the app/webroot/css folder
+--example
+---echo $this->Html->css('styleSheet); //.css file extension not needed
+---echo $this->Html->css(array('menu', 'layout')); // .css file extension not needed
+--output
+---<link rel="stylesheet" type="text/css" href="/css/menus.css" />
+---<link rel="stylesheet" type="text/css" href="/css/layout.css" />
+
+HtmlHelper Image
+-parameters
+--first - string path to the image
+---this is relative to the app/webroot/img folder
+--second - optional associted array of options(html attributes)
+-example
+--echo $this->Html->image('chocCake.jpg', array('alt'=>'Chocolate Cake'));
+
+
+HtmlHelper Script 
+-parameters
+--first - string to a single JS file, or an array of JS Files
+---this is relative to the app/webroot/js folder
+---will also allow for directories outside webroot/js folder
+---can also take a path to a remote URL
+--second - optional associated array of options(html attributes)
+--we will only focus on the first parameter
+-example
+-- echo $this->Html->script("scripts");
+-- echo $this->Html->script("/newJSDirectory/scripts");
+-- echo $this->Html->script("http://www.somesites.com/jsFile.js");
+---notice you must include the extension
+-output
+--<script type="text/jvascript" src="/js/scripts.js"></script>
+
+HtmlHelper FormHelper
+-basic function of the FormHelper
+--the FormHelper generates the needed code for form creation
+--creates forms quicky
+--streamlines validation, re-population and layout
+-lots of methods
+--the FormHelper has a lot of methods. We will be covering the following:
+---create
+---end 
+---hidden
+---password
+---input
+
+FormHelper Create
+-parameters
+--first - optional string model name
+--second -optional associated array of options
+-defaults
+--form method defaults to 'post'
+-example
+--general Add or Edit form with Model 
+--- echo $this->Form->create("Items");
+-output 
+-- <form id="ItemAddForm" method="post" action="/items/add">
+--if edit form
+--- <form id="ItemEditForm" method="post" action="/items/edit/5">
+--- <input type="hidden" name="_method" value="PUT" />
+
+FormHelper End 
+-single parameter optional
+--string name for submit button or
+--associated array of options 
+-example:
+-- echo $this->Form->end();
+-- echo $this->Form->end("Add Item");
+-output
+--</form>
+--<div clss="submit">
+    <input type="submit" value="Add Item" />
+  </div>
+  </form>
+
+FormHelper hidden
+-parameters
+--first - string field name
+--second - optional associated array of options
+-example
+-- echo $this->Form->hidden("id");
+-output
+-- <input name="data[Item][id]" value="16", id="ItemId", type="hiden" />
+
+
+FormHelper Password 
+-parameters
+--first - string field name
+--second - optional associated array of options
+-example:
+--echo $this->Form->password("password");
+
+FormHelper Input 
+-parameters
+--first - string field name
+--second - optional associated array of options
+-basic understanding
+--output of an input method
+---div container
+---label tag 
+---input tag
+---error element(if applicable)
+--the input method determines what type of input you need based on the field that is provided(first parameter)
+--below is a list of associations based on column type
+---see ch6_10_1.png 
+-input options 
+--optional
+--associated array, key/value pairs
+-options list
+--type -force the type of input to be used
+---example - 'type'=>'email'
+--label - provide personal text for the label tag
+---example - 'label'=>'First Name'
+--default - set the default value of the field
+---example - 'default' => 'Chocolate Cake'
+--selected - set a selected option based on the value provided
+--- example - 'selected'=>'3'
+--rows, cols - set the rows and columns of a text area
+---example - 'rows' => '5', 'cols'=>'10'
+
+
